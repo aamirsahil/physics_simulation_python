@@ -7,19 +7,24 @@ import matplotlib.pyplot as plt
 
 def main():
     total_time = 100
+    # t step
     dt = 0.01
     total_t_num = int(total_time // dt)
     time = np.linspace(0, total_time, total_t_num)
+    
     x_min, x_max = 0, 1
-    total_x_num = 10
-    dx = (x_max - x_min)/total_x_num
+    # x step
+    dx = 0.01
+    total_x_num = int((x_max - x_min) // dx)
     # x coordiante
     x = np.linspace(x_min, x_max, total_x_num)
+    
     # temperature field
     T = np.zeros(total_x_num)
     # boundary condition
     T[0], T[-1] = (0, 0)
     T[1:-1] = np.sin(np.pi*x[1: -1])
+    
     plt.plot(x, T)
     plt.show()
 
